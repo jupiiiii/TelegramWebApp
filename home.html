@@ -3,13 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Web App Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
+
+        }
+
+        #main {
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 10px;
+
+        }
+
+        img {
+            width: 70px;
+            margin: 30px auto;
+        }
+
+        p {
+            width: 350px;
+            margin: 0 auto;
+        }
+
+        button {
+            border: 0;
+            border-radius: 5px;
+            border-top: 50px;
+            height: 60px;
+            width: 200px;
+            font-size: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 500ms ease;
+            color: var(--tg-theme-button-color);
+            background: var(--tg-theme-button-text-color);
+        }
+        button:hover {
+            background: var(--tg-theme-secondary-bg-color);
+        }
+    </style>
 </head>
 <body>
     <div id="main">
         <h1>Jupi</h1>
-        <img src="https://ucarecdn.com/898c16ce-7ee8-4776-8f14-4ba77dcf5b17/-/format/auto/-/preview/3000x3000/-/quality/lighter/Burger_selber_machen_rezept.jpg">
+        <img src="https://ucarecdn.com/898c16ce-7ee8-4776-8f14-4ba77dcf5b17/-/format/auto/-/preview/3000x3000/-/quality/lighter/Burger_selber_machen_rezept.jpg" alt="xxx">
         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
         <button id="buy">Order</button>
     </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </body>
 </html>
