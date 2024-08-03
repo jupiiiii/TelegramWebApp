@@ -135,6 +135,7 @@
                 email: email,
                 phone: phone
             }
+	    console.log("Sending data:", data);
             tg.sendData(JSON.stringify(data));
 	    tg.close();
 	        });
