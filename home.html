@@ -111,7 +111,7 @@
 	    order.addEventListener('click', () => {
             document.getElementById('error').innerText = ' ';
             let name = document.getElementById('user_name').value;
-            let email = document.getElementById('user_emali').value;
+            let email = document.getElementById('user_email').value;
             let phone = document.getElementById('user_phone').value;
 
             if (name.length < 5) {
@@ -130,9 +130,9 @@
                 }
 
             let data = {
-                name: name;
-                email: email;
-                phone: phone;
+                name: name,
+                email: email,
+                phone: phone
             }
             tg.sendData(JSON.stringify(data))
 		    tg.close();
