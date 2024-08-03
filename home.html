@@ -31,13 +31,13 @@
         }
 
         img {
-            width: 70px;
+            width: 250px;
             margin: 30px auto;
         }
 
         p {
             width: 350px;
-            margin: 0 auto;
+            margin: 5px auto;
         }
 
         button {
@@ -63,8 +63,29 @@
         <h1>Jupi</h1>
         <img src="https://ucarecdn.com/898c16ce-7ee8-4776-8f14-4ba77dcf5b17/-/format/auto/-/preview/3000x3000/-/quality/lighter/Burger_selber_machen_rezept.jpg" alt="xxx">
         <p>Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p>
-        <button id="buy">Order</button>
+        <button id="buy">Buy</button>
     </div>
+    <form id="form">
+        <label for='user_name'></label><input type='text' placeholder='First Name' id='user_name' >
+        <label for='user_email'></label><input type='text' placeholder='Email' id='user_email' >
+        <label for='user_phone'></label><input type='text' placeholder='Phone' id='user_phone' >
+        <button id="order">Order</button>
+    </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+	    let tg = window.Telegram.WebApp;
+	    let buy = document.getElementById('buy');
+	    let order = document.getElementById('order');
+
+	    buy.addEventListener('click', () => {
+		    document.getElementById('main').style.display = 'none';
+		    document.getElementById('form').style.display = 'block';
+		    document.getElementById('user_name').value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+            });
+
+	    order.addEventListener('click', () => {
+		    tg.close();
+	        });
+    </script>
 </body>
 </html>
