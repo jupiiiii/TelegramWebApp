@@ -38,6 +38,7 @@
         p {
             width: 400px;
             margin: 5px auto;
+            font-size: small;
             font-family: 'Monaco', sans-serif;
             font-weight: 250;
         }
@@ -83,7 +84,7 @@
 <body>
     <div id="main">
         <h1>wi-Shop</h1>
-        <img src="—Pngtree—motion fashion boy fashion model_3932088.png" alt="xxx">
+        <img src="/—Pngtree—motion fashion boy fashion model_3932088.png" alt="xxx">
         <p>See it, like it, buy it and rock on it!</p>
         <button id="buy">Buy</button>
     </div>
@@ -91,6 +92,7 @@
         <label for='user_name'></label><input type='text' placeholder='First Name' id='user_name' >
         <label for='user_email'></label><input type='text' placeholder='Email' id='user_email' >
         <label for='user_phone'></label><input type='text' placeholder='Phone' id='user_phone' >
+        <div id="error"></div>
         <button id="order">Order</button>
     </form>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -98,6 +100,7 @@
 	    let tg = window.Telegram.WebApp;
 	    let buy = document.getElementById('buy');
 	    let order = document.getElementById('order');
+        tg.expand();
 
 	    buy.addEventListener('click', () => {
 		    document.getElementById('main').style.display = 'none';
@@ -106,6 +109,32 @@
             });
 
 	    order.addEventListener('click', () => {
+            document.getElementById('error').innerText = ' ';
+            let name = document.getElementById('user_name').value;
+            let email = document.getElementById('user_emali').value;
+            let phone = document.getElementById('user_phone').value;
+
+            if (name.length < 5) {
+	            document.getElementById('error').innerText = 'Please enter your name';
+	            return;
+                }
+
+            if (email.length < 5) {
+	            document.getElementById('error').innerText = 'Please enter your correct email';
+	            return;
+                }
+
+            if (phone.length < 5) {
+	            document.getElementById('error').innerText = 'Please enter your phone number';
+	            return;
+                }
+
+            let data = {
+                name: name;
+                email: email;
+                phone: phone;
+            }
+            tg.sendData(JSON.stringify(data))
 		    tg.close();
 	        });
     </script>
