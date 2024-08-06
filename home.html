@@ -245,9 +245,36 @@
             transition: background-color 0.3s ease;
         }
 
-
         #place-order-button:hover {
         background-color: #218838;
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .back-arrow {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
         }
 
     </style>
@@ -267,7 +294,7 @@
         <button id="order">Order</button>
     </form>
     <div id="items-list">
-        <div class="item">
+        <div class="item" data-image-src="1.png">
             <img src="1.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -278,7 +305,7 @@
                 <button class="quantity-button plus" data-item-id="1">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="2.png">
             <img src="2.png" alt="T-shirt">
             <div class="item-name">Sapphire</div>
             <div class="item-price">$25</div>
@@ -289,7 +316,7 @@
                 <button class="quantity-button plus" data-item-id="2">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="3.png">
             <img src="3.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -300,7 +327,7 @@
                 <button class="quantity-button plus" data-item-id="3">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="1.png">
             <img src="1.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -311,7 +338,7 @@
                 <button class="quantity-button plus" data-item-id="4">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="2.png">
             <img src="2.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -322,7 +349,7 @@
                 <button class="quantity-button plus" data-item-id="5">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="3.png">
             <img src="3.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -333,7 +360,7 @@
                 <button class="quantity-button plus" data-item-id="6">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="1.png">
             <img src="1.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -344,7 +371,7 @@
                 <button class="quantity-button plus" data-item-id="7">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="2.png">
             <img src="2.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -355,7 +382,7 @@
                 <button class="quantity-button plus" data-item-id="8">+</button>
             </div>
         </div>
-        <div class="item">
+        <div class="item" data-image-src="3.png">
             <img src="3.png" alt="T-shirt">
             <div class="item-name">Emerald</div>
             <div class="item-price">$25</div>
@@ -368,6 +395,10 @@
         </div>
 
         <!-- Add more items as needed -->
+    </div>
+    <div class="modal" id="imageModal">
+        <span class="back-arrow" id="closeModal">&larr; Back</span>
+        <img id="modalImage" src="" alt="Enlarged image">
     </div>
     <button id="place-order-button" style="display: none;">Place Order</button>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
@@ -451,6 +482,32 @@
                     updatePlaceOrderButtonVisibility();
                 });
             });
+
+
+        });
+
+        // Script for handling the modal for image enlargement
+        const items = document.querySelectorAll('.item img');
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const closeModal = document.getElementById('closeModal');
+
+        items.forEach(image => {
+            image.addEventListener('click', () => {
+                const src = image.getAttribute('src');
+                modalImage.setAttribute('src', src);
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target !== modalImage && e.target !== closeModal) {
+                modal.style.display = 'none';
+            }
         });
 
 
