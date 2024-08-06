@@ -197,8 +197,8 @@
 
         .item-counter {
             position: absolute;
-            top: 5px;
-            right: 5px;
+            top: 7px;
+            right: 7px;
             background-color: #f4a940;
             color: white;
             padding: 5px;
@@ -216,6 +216,30 @@
                 font-weight: 300; /* Lighter weight for mobile, if needed */
             }
         }
+        #place-order-button {
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 200px;
+        height: 50px;
+        font-size: 18px;
+        font-weight: 400;
+        border-radius: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        display: none; /* Hidden by default */
+        z-index: 1000; /* Ensure it stays above other content */
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+        }
+
+        #place-order-button:hover {
+        background-color: #218838;
+        }
+
     </style>
 </head>
 <body>
@@ -335,6 +359,7 @@
 
         <!-- Add more items as needed -->
     </div>
+    <button id="place-order-button" style="display: none;">Place Order</button>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
         let tg = window.Telegram.WebApp;
@@ -349,42 +374,74 @@
             document.getElementById('items-list').style.display = 'flex';
         });
 
-        document.querySelectorAll('.item-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-item-id');
-                const controls = this.nextElementSibling;
-                this.style.display = 'none'; // Hide the "ADD" button
-                controls.style.display = 'flex'; // Show the "+" and "-" buttons with the counter
+        document.addEventListener('DOMContentLoaded', function() {
+            let itemCounter = {}; // Object to track count for each item
+            const placeOrderButton = document.getElementById('place-order-button');
+
+            // Function to update the "Place Order" button visibility
+            function updatePlaceOrderButtonVisibility() {
+                const totalItems = Object.values(itemCounter).reduce((sum, count) => sum + count, 0);
+                placeOrderButton.style.display = totalItems > 0 ? 'block' : 'none';
+            }
+
+            // Adding click event to the "ADD" button
+            document.querySelectorAll('.item-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = this.getAttribute('data-item-id');
+                    const controls = this.nextElementSibling;
+
+                    // Hide the "ADD" button and show the controls
+                    this.style.display = 'none';
+                    controls.style.display = 'flex';
+
+                    if (!itemCounter[itemId]) itemCounter[itemId] = 0;
+                    itemCounter[itemId]++;
+                    updatePlaceOrderButtonVisibility();
+                });
             });
-        });
 
-        document.querySelectorAll('.quantity-button.plus').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-item-id');
-                const counter = document.getElementById(`counter-${itemId}`);
-                let count = parseInt(counter.textContent);
-                count += 1;
-                counter.textContent = count;
-            });
-        });
+            // Incrementing item count
+            document.querySelectorAll('.quantity-button.plus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = this.getAttribute('data-item-id');
+                    const counter = document.getElementById(`counter-${itemId}`);
+                    let count = parseInt(counter.textContent);
 
-        document.querySelectorAll('.quantity-button.minus').forEach(button => {
-            button.addEventListener('click', function() {
-                const itemId = this.getAttribute('data-item-id');
-                const counter = document.getElementById(`counter-${itemId}`);
-                let count = parseInt(counter.textContent);
-                count -= 1;
-
-                if (count === 0) {
-                    const itemControls = this.parentElement;
-                    itemControls.style.display = 'none'; // Hide the controls
-                    itemControls.previousElementSibling.style.display = 'block'; // Show the "ADD" button
-                    counter.textContent = 1; // Reset counter for next addition
-                } else {
+                    // Increment the counter value
+                    count += 1;
                     counter.textContent = count;
-                }
+
+                    itemCounter[itemId]++;
+                    updatePlaceOrderButtonVisibility();
+                });
+            });
+
+            // Decrementing item count
+            document.querySelectorAll('.quantity-button.minus').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = this.getAttribute('data-item-id');
+                    const counter = document.getElementById(`counter-${itemId}`);
+                    let count = parseInt(counter.textContent);
+
+                    // Decrement the counter value
+                    count -= 1;
+                    counter.textContent = count;
+
+                    itemCounter[itemId]--;
+                    if (itemCounter[itemId] === 0) {
+                        delete itemCounter[itemId]; // Remove item from counter
+                        // Hide the controls and show the "ADD" button
+                        const itemControls = this.parentElement;
+                        itemControls.style.display = 'none';
+                        itemControls.previousElementSibling.style.display = 'block';
+                        counter.textContent = 1; // Reset counter for next addition
+                    }
+
+                    updatePlaceOrderButtonVisibility();
+                });
             });
         });
+
 
         /*order.addEventListener('click', (event) => {
             event.preventDefault();
