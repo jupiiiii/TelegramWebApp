@@ -505,6 +505,7 @@
             modal.addEventListener('click', (e) => {
                 if (e.target !== modalImage && e.target !== closeModal) {
                 modal.style.display = 'none';
+                updatePlaceOrderButtonVisibility();
                 }
             });
 
