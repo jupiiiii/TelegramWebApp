@@ -371,12 +371,12 @@
         let tg = window.Telegram.WebApp;
         let shop_now = document.getElementById('shop_now');
         let order = document.getElementById('order');
-        tg.expand();
 
         document.getElementById('main').style.display = 'block';
         document.getElementById('items-list').style.display = 'none';
 
         shop_now.addEventListener('click', () => {
+            tg.expand();
             document.getElementById('main').style.display = 'none';
             document.getElementById('items-list').style.display = 'flex';
         });
