@@ -60,7 +60,6 @@
         button:hover {
             background: var(--tg-theme-secondary-bg-color);
         }
-
         #form {
             display: none;
             text-align: center;
@@ -90,6 +89,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            color: var(--tg-theme-text-color);
+            background: var(--tg-theme-bg-color);
         }
 
         .item {
@@ -124,7 +125,19 @@
         }
 
         .item-button {
-            margin-top: 4px;
+            border: 0;
+            border-radius: 5px;
+            height: 40px;
+            width: 150px;
+            font-size: 15px;
+            font-weight: 300;
+            cursor: pointer;
+            transition: all 500ms ease;
+            color: var(--tg-theme-button-color);
+            background: var(--tg-theme-button-text-color);
+        }
+        #add:hover {
+            background: var(--tg-theme-secondary-bg-color);
         }
     </style>
 </head>
