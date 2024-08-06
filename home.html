@@ -240,8 +240,7 @@
             width: 200px;
             height: 50px;
             font-weight: 400;
-            color: white;
-            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
         }
 
@@ -276,6 +275,46 @@
             font-size: 15px;
             cursor: pointer;
         }
+
+        #orderSummaryModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .order-summary-header {
+            background: rgba(203, 47, 47, 0);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .order-summary-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            /*background: rgba(5, 8, 14, 0.94);*/
+            background: var(--tg-theme-bg-color);;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        .order-summary-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+
+        .order-summary-name, .order-summary-quantity, .order-summary-price {
+            margin: 0 10px;
+        }
+
 
     </style>
 </head>
@@ -400,6 +439,14 @@
         <span class="back-arrow" id="closeModal">&larr; Back</span>
         <img id="modalImage" src="" alt="Enlarged image">
     </div>
+    <div id="orderSummaryModal" style="display: none;">
+        <div class="order-summary-header">
+            <span>Order Summary</span>
+            <button id="closeOrderSummary">&larr; Back</button>
+            <button id="checkout">Checkout</button>
+        </div>
+        <div id="orderSummary"></div>
+    </div>
     <button id="place-order-button" style="display: none;">Place Order</button>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
@@ -424,6 +471,9 @@
             const modalImage = document.getElementById('modalImage');
             const closeModal = document.getElementById('closeModal');
 
+            // Array to keep track of selected items
+            const selectedItems = [];
+
             // Function to update the "Place Order" button visibility
             function updatePlaceOrderButtonVisibility() {
                 const totalItems = Object.values(itemCounter).reduce((sum, count) => sum + count, 0);
@@ -435,6 +485,16 @@
                 button.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-item-id');
                     const controls = this.nextElementSibling;
+                    const itemName = this.parentElement.querySelector('.item-name').innerText;
+                    const itemPrice = this.parentElement.querySelector('.item-price').innerText;
+                    const itemImgSrc = this.parentElement.querySelector('img').src;
+                    const item = selectedItems.find(item => item.id === itemId);
+
+                    if (!item) {
+                        selectedItems.push({ id: itemId, name: itemName, price: itemPrice, imgSrc: itemImgSrc, quantity: 1 });
+                    }
+
+                    //updateOrderSummary(); // Update order summary when an item is added
 
                     // Hide the "ADD" button and show the controls
                     this.style.display = 'none';
@@ -452,6 +512,12 @@
                     const itemId = this.getAttribute('data-item-id');
                     const counter = document.getElementById(`counter-${itemId}`);
                     let count = parseInt(counter.textContent);
+                    const item = selectedItems.find(item => item.id === itemId);
+
+                    if (item) {
+                        item.quantity += 1;
+                    }
+                    //updateOrderSummary();
 
                     // Increment the counter value
                     count += 1;
@@ -468,6 +534,17 @@
                     const itemId = this.getAttribute('data-item-id');
                     const counter = document.getElementById(`counter-${itemId}`);
                     let count = parseInt(counter.textContent);
+                    const item = selectedItems.find(item => item.id === itemId);
+
+                    if (item && item.quantity > 0) {
+                        item.quantity -= 1;
+                    }
+
+                    if (item.quantity === 0) {
+                        selectedItems.splice(selectedItems.indexOf(item), 1); // Remove item from selectedItems if quantity is 0
+                    }
+
+                    //updateOrderSummary();
 
                     // Decrement the counter value
                     count -= 1;
@@ -486,6 +563,26 @@
                     updatePlaceOrderButtonVisibility();
                 });
             });
+
+            function updateOrderSummary() {
+                const orderSummary = document.getElementById('orderSummary');
+                orderSummary.innerHTML = ''; // Clear previous summary
+
+                selectedItems.forEach(item => {
+                    const listItem = document.createElement('div');
+                    listItem.className = 'order-summary-item';
+                    listItem.innerHTML = `
+                        <img src="${item.imgSrc}" alt="${item.name}" class="order-summary-img">
+                        <span class="order-summary-name">${item.name}</span>
+                        <span class="order-summary-quantity">x${item.quantity}</span>
+                        <span class="order-summary-price">${item.price}</span>
+                    `;
+                    orderSummary.appendChild(listItem);
+                });
+
+                const modal = document.getElementById('orderSummaryModal');
+                modal.style.display = selectedItems.length > 0 ? 'flex' : 'none'; // Show or hide the modal based on the selection
+            }
 
             // Script for handling the modal for image enlargement
             document.querySelectorAll('.item img').forEach(image => {
@@ -507,6 +604,20 @@
                 modal.style.display = 'none';
                 updatePlaceOrderButtonVisibility();
                 }
+            });
+
+
+            // Event listener for the "Place Order" button to show the order summary modal
+            document.getElementById('place-order-button').addEventListener('click', () => {
+                updateOrderSummary(); // Update and show the order summary modal
+                placeOrderButton.style.display = 'none'
+            });
+
+            // Event listener for closing the order summary modal
+            document.getElementById('closeOrderSummary').addEventListener('click', () => {
+                const modal = document.getElementById('orderSummaryModal');
+                modal.style.display = 'none'; // Hide the order summary modal
+                updatePlaceOrderButtonVisibility();
             });
 
 
