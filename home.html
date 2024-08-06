@@ -217,24 +217,30 @@
             }
         }
         #place-order-button {
-        position: fixed;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 200px;
-        height: 50px;
-        font-size: 18px;
-        font-weight: 400;
-        border-radius: 10px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        cursor: pointer;
-        display: none; /* Hidden by default */
-        z-index: 1000; /* Ensure it stays above other content */
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-        transition: background-color 0.3s ease;
+
         }
+        #place-order-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50; /* or your preferred color */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 1000; /* Ensure it appears above other elements */
+            display: none;
+            width: 200px;
+            height: 50px;
+            font-weight: 400;
+            color: white;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
 
         #place-order-button:hover {
         background-color: #218838;
