@@ -401,7 +401,7 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 300px;
+            width: 400px;
             display: flex;
             justify-content: space-between;
             background-color: rgba(255, 255, 255, 0); /* Background color for the button container */
@@ -413,7 +413,7 @@
             border: 0;
             border-radius: 5px;
             height: 40px;
-            width: 45%;
+            width: 49%;
             font-size: 15px;
             font-weight: 300;
             cursor: pointer;
@@ -763,6 +763,34 @@
                 closesummary.style.display = 'none';
                 updatePlaceOrderButtonVisibility();
             });
+
+            // Event listener for checking out the order summary modal
+            document.getElementById('checkout').addEventListener('click', () => {
+                sendOrderToTelegram();
+
+            });
+
+            function sendOrderToTelegram() {
+                const orderData = selectedItems.map(item => {
+                    const itemPrice = parseFloat(item.price.replace(/[^0-9.-]+/g, ""));
+                    const itemTotal = item.quantity * itemPrice;
+                    return {
+                        name: item.name,
+                        quantity: item.quantity,
+                        totalPrice: itemTotal.toFixed(2)
+                    };
+                });
+
+                const grandTotal = orderData.reduce((acc, item) => acc + parseFloat(item.totalPrice), 0).toFixed(2);
+
+                const orderSummary = {
+                    items: orderData,
+                    grandTotal: grandTotal
+                };
+
+                tg.sendData(JSON.stringify(orderSummary));
+                tg.close();
+            }
 
 
 
