@@ -280,7 +280,7 @@
             cursor: pointer;
         }
 
-        #orderSummaryModal {
+        /*#orderSummaryModal {
             display: none;
             position: fixed;
             top: 0;
@@ -289,38 +289,65 @@
             height: 100%;
             background: var(--tg-theme-bg-color);
             justify-content: center;
-            align-items: flex-start; /* Align items at the top */
-            z-index: 999; /* Ensure it is above other content but below the bottom buttons */
+            align-items: flex-start;
+            z-index: 999;
             padding: 20px;
             box-sizing: border-box;
-            overflow-y: auto; /* Allow modal to scroll */
+            overflow-y: auto;
+        }*/
+        #orderSummaryModal {
+            position: fixed;
+            top: 10%;
+            left: 0;
+            right: 0;
+            height: 80%;
+            background: var(--tg-theme-bg-color);;
+            border: 1px solid rgba(221, 221, 221, 0.73);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden; /* Hide scrollbars for the box itself */
+            z-index: 999; /* Ensure it is above other content */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .order-summary-header {
+            background: #246728FF;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 200;
+            margin-bottom: 10px;
         }
 
         .order-summary-container {
             width: 100%;
             max-width: 500px;
-            margin: 50px auto 60px auto; /* Center the container and add margin from the top */
-            background: var(--tg-theme-bg-color);;
+            margin: 50px auto 60px auto;
+            background: var(--tg-theme-bg-color);
             border-radius: 10px;
-            overflow: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .order-summary-header {
+        /*.order-summary-header {
             background: #246728;
             color: white;
             padding: 15px;
             text-align: center;
             font-size: 18px;
             font-weight: bold;
-        }
+        }*/
 
-        #orderSummary {
+       /* #orderSummary {
             display: block;
             background: var(--tg-theme-bg-color);
             padding: 10px;
-            max-height: calc(100vh - 100px); /* Adjust max height to fit within the screen */
-            overflow-y: auto; /* Ensure only the content area scrolls */
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }*/
+        #orderSummary {
+            height: calc(100% - 50px); /* Adjust height to fit the content and padding */
+            overflow-y: auto; /* Make this section scrollable */
+            padding-right: 10px; /* Prevent scrollbar from covering content */
         }
 
         .order-summary-item {
