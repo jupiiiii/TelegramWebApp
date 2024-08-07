@@ -7,6 +7,10 @@
     <title>Web App Test</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap">
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -296,7 +300,7 @@
             width: 100%;
             max-width: 500px;
             margin: 50px auto 30px auto; /* Center the container and add margin from the top */
-            background: white;
+            background: var(--tg-theme-bg-color);;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -323,7 +327,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between; /* Ensure items within each order-summary-item are spaced out */
-            background: white;
+            background: var(--tg-theme-bg-color);
             padding: 10px;
             margin-bottom: 5px;
             border-bottom: 1px solid #ddd;
