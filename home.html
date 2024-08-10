@@ -10,21 +10,30 @@
         html {
             scroll-behavior: smooth;
         }
-        @keyframes backgroundAnimation {
+        @keyframes slideBackground {
             0% {
                 background-image: url('bg2.png');
+                background-position: 0% 0%;
             }
-            25% {
+            20% {
+                background-image: url('bg2.png');
+                background-position: 100% 0%;
+            }
+            40% {
                 background-image: url('bg3.png');
+                background-position: 0% 0%;
             }
-            50% {
+            60% {
+                background-image: url('bg3.png');
+                background-position: 100% 0%;
+            }
+            80% {
                 background-image: url('bg4.png');
-            }
-            75% {
-                background-image: url('bg5.png');
+                background-position: 0% 0%;
             }
             100% {
-                background-image: url('bg6.png');
+                background-image: url('bg4.png');
+                background-position: 100% 0%;
             }
         }
 
@@ -34,9 +43,10 @@
             width: 100%;
             height: 100vh; /* Full viewport height */
             /*overflow: hidden;*/
-            animation: backgroundAnimation 20s infinite;
+            animation: slideBackground 5s infinite;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* The video itself */
