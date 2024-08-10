@@ -50,20 +50,6 @@
             transition: opacity 0.1s;
         }
 
-        /* The video itself */
-        #video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            
-            height: auto;
-            z-index: -1;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
         #background-image {
             position: absolute;
             top: 0;
@@ -537,10 +523,6 @@
 <body>
     <!-- Video Background Container -->
     <div id="video-background">
-        <video autoplay loop playsinline>
-            <source src="intro.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
         <img id="background-image" src="bg1.png" alt="Background Image">
 
         <!-- Content Layered on Top of Video -->
