@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Web App Test</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap">
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+<body>
+    <!-- Video Background Container -->
+    <div id="video-background">
+        <img id="background-image" src="bg1.png" alt="Background Image">
+
+        <!-- Content Layered on Top of Video -->
+        <div id="main-container">
+            <div id="main">
+                <h1>Infinite Choice...</h1>
+                <p>Where wild bites meet big laughs!
+              Dive into mega burgers, zany nachos, and
+         a flavor fiesta that will make your taste buds dance!</p>
+                <button id="shop_now">Order Now</button>
+            </div>
+        </div>
+    </div>
+    <form id="form">
+        <label for='user_name'></label><input type='text' placeholder='First Name' id='user_name' >
+        <label for='user_email'></label><input type='text' placeholder='Email' id='user_email' >
+        <label for='user_phone'></label><input type='text' placeholder='Phone' id='user_phone' >
+        <div id="error"></div>
+        <button id="order">Order</button>
+    </form>
+    <div id="items-list" style="display: none">
+        <div class="item" data-image-src="coke_burgur">
+            <img src="coke_burgur.png" alt="coke and burger">
+            <div class="item-name">Burger and Coke</div>
+            <div class="item-price">$10</div>
+            <button class="item-button" data-item-id="1">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="1">-</button>
+                <span class="item-counter" id="counter-1">1</span>
+                <button class="quantity-button plus" data-item-id="1">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="hamburger.png">
+            <img src="hamburger.png" alt="Hamburger">
+            <div class="item-name">Hamburger</div>
+            <div class="item-price">$6</div>
+            <button class="item-button" data-item-id="2">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="2">-</button>
+                <span class="item-counter" id="counter-2">1</span>
+                <button class="quantity-button plus" data-item-id="2">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="bacon_burgur.png">
+            <img src="bacon_burgur.png" alt="Bacon Burger">
+            <div class="item-name">Bacon Burger</div>
+            <div class="item-price">$7</div>
+            <button class="item-button" data-item-id="3">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="3">-</button>
+                <span class="item-counter" id="counter-3">1</span>
+                <button class="quantity-button plus" data-item-id="3">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="chicken_salad.png">
+            <img src="chicken_salad.png" alt="Chicken Salad">
+            <div class="item-name">Chicken Salad</div>
+            <div class="item-price">$8</div>
+            <button class="item-button" data-item-id="4">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="4">-</button>
+                <span class="item-counter" id="counter-4">1</span>
+                <button class="quantity-button plus" data-item-id="4">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="chicken_wrap.png">
+            <img src="chicken_wrap.png" alt="Chicken Wrap">
+            <div class="item-name">Chicken Wrap</div>
+            <div class="item-price">$6</div>
+            <button class="item-button" data-item-id="5">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="5">-</button>
+                <span class="item-counter" id="counter-5">1</span>
+                <button class="quantity-button plus" data-item-id="5">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="crispy_salad_sandwich.png">
+            <img src="crispy_salad_sandwich.png" alt="Crispy Salad Sandwich">
+            <div class="item-name">Crispy Salad Sandwich</div>
+            <div class="item-price">$5</div>
+            <button class="item-button" data-item-id="6">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="6">-</button>
+                <span class="item-counter" id="counter-6">1</span>
+                <button class="quantity-button plus" data-item-id="6">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="dooner.png">
+            <img src="dooner.png" alt="Dooner Kebab">
+            <div class="item-name">Dooner Kebab</div>
+            <div class="item-price">$6</div>
+            <button class="item-button" data-item-id="7">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="7">-</button>
+                <span class="item-counter" id="counter-7">1</span>
+                <button class="quantity-button plus" data-item-id="7">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="fish_finger.png">
+            <img src="fish_finger.png" alt="Finger Finger">
+            <div class="item-name">Finger Finger</div>
+            <div class="item-price">$5</div>
+            <button class="item-button" data-item-id="8">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="8">-</button>
+                <span class="item-counter" id="counter-8">1</span>
+                <button class="quantity-button plus" data-item-id="8">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="fried_chicken.png">
+            <img src="fried_chicken.png" alt="Fried Chicken">
+            <div class="item-name">Fried Chicken</div>
+            <div class="item-price">$6</div>
+            <button class="item-button" data-item-id="9">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="9">-</button>
+                <span class="item-counter" id="counter-9">1</span>
+                <button class="quantity-button plus" data-item-id="9">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="fries.png">
+            <img src="fries.png" alt="Fries">
+            <div class="item-name">French Fries</div>
+            <div class="item-price">$4</div>
+            <button class="item-button" data-item-id="10">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="10">-</button>
+                <span class="item-counter" id="counter-10">1</span>
+                <button class="quantity-button plus" data-item-id="10">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="ice_cream.png">
+            <img src="ice_cream.png" alt="Ice Cream">
+            <div class="item-name">Ice Cream</div>
+            <div class="item-price">$4</div>
+            <button class="item-button" data-item-id="11">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="11">-</button>
+                <span class="item-counter" id="counter-11">1</span>
+                <button class="quantity-button plus" data-item-id="11">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="pepperoni.png">
+            <img src="pepperoni.png" alt="Pepperoni Pizza">
+            <div class="item-name">Pepperoni Pizza</div>
+            <div class="item-price">$10</div>
+            <button class="item-button" data-item-id="12">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="12">-</button>
+                <span class="item-counter" id="counter-12">1</span>
+                <button class="quantity-button plus" data-item-id="12">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="smoked_salmon.png">
+            <img src="smoked_salmon.png" alt="Smoked Salmon Sandwich">
+            <div class="item-name">Smoked Salmon Sandwich</div>
+            <div class="item-price">$8</div>
+            <button class="item-button" data-item-id="13">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="13">-</button>
+                <span class="item-counter" id="counter-13">1</span>
+                <button class="quantity-button plus" data-item-id="13">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="beer.png">
+            <img src="beer.png" alt="Beer">
+            <div class="item-name">Beer</div>
+            <div class="item-price">$2</div>
+            <button class="item-button" data-item-id="14">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="14">-</button>
+                <span class="item-counter" id="counter-14">1</span>
+                <button class="quantity-button plus" data-item-id="14">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="coffee.png">
+            <img src="coffee.png" alt="Coffee">
+            <div class="item-name">Coffee</div>
+            <div class="item-price">$1</div>
+            <button class="item-button" data-item-id="15">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="15">-</button>
+                <span class="item-counter" id="counter-15">1</span>
+                <button class="quantity-button plus" data-item-id="15">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="coke.png">
+            <img src="coke.png" alt="Coke">
+            <div class="item-name">Coke</div>
+            <div class="item-price">$1</div>
+            <button class="item-button" data-item-id="16">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="16">-</button>
+                <span class="item-counter" id="counter-16">1</span>
+                <button class="quantity-button plus" data-item-id="16">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="lemonade.png">
+            <img src="lemonade.png" alt="Lemonade">
+            <div class="item-name">Lemonade</div>
+            <div class="item-price">$1</div>
+            <button class="item-button" data-item-id="17">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="17">-</button>
+                <span class="item-counter" id="counter-17">1</span>
+                <button class="quantity-button plus" data-item-id="17">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="orange.png">
+            <img src="orange.png" alt="Orange">
+            <div class="item-name">Orange</div>
+            <div class="item-price">$1</div>
+            <button class="item-button" data-item-id="18">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="18">-</button>
+                <span class="item-counter" id="counter-18">1</span>
+                <button class="quantity-button plus" data-item-id="18">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="pepsi.png">
+            <img src="pepsi.png" alt="Pepsi">
+            <div class="item-name">Pepsi</div>
+            <div class="item-price">$1</div>
+            <button class="item-button" data-item-id="19">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="19">-</button>
+                <span class="item-counter" id="counter-19">1</span>
+                <button class="quantity-button plus" data-item-id="19">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="water.png">
+            <img src="water.png" alt="Water">
+            <div class="item-name">Water</div>
+            <div class="item-price">$1</div>
+            <button class="item-button" data-item-id="20">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="20">-</button>
+                <span class="item-counter" id="counter-20">1</span>
+                <button class="quantity-button plus" data-item-id="20">+</button>
+            </div>
+        </div>
+        <div class="item" data-image-src="smoothie.png">
+            <img src="smoothie.png" alt="Smoothie">
+            <div class="item-name">Smoothie</div>
+            <div class="item-price">$4</div>
+            <button class="item-button" data-item-id="21">ADD</button>
+            <div class="item-controls" style="display: none;">
+                <button class="quantity-button minus" data-item-id="21">-</button>
+                <span class="item-counter" id="counter-21">1</span>
+                <button class="quantity-button plus" data-item-id="21">+</button>
+            </div>
+        </div>
+
+        <!-- Add more items as needed -->
+    </div>
+    <div class="modal" id="imageModal">
+        <span class="back-arrow" id="closeModal">&larr; Back</span>
+        <img id="modalImage" src="" alt="Enlarged image">
+    </div>
+    <div id="orderSummaryModal" style="display: none;">
+        <div class="order-summary-container">
+            <div class="order-summary-header">
+                <span>Order Summary</span>
+            </div>
+            <div id="orderSummary"></div>
+        </div>
+    </div>
+
+    <div id="bottom-buttons" style="display: none">
+        <button id="closeOrderSummary">&larr; Back</button>
+        <button id="checkout">Checkout</button>
+    </div>
+    <button id="place-order-button" style="display: none;">Place Order</button>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="myjs.js"></script>
+
+</body>
+</html>
