@@ -781,6 +781,14 @@
             // Array to keep track of selected items
             const selectedItems = [];
 
+            const video = document.getElementById('video-background');
+        
+            video.play().catch(function() {
+                // Autoplay failed; user interaction is required
+                video.muted = true;
+                video.play();
+            });
+
             // Function to handle the cool bounce effect on scroll
             function handleScroll() {
                 const items = document.querySelectorAll('.item');
