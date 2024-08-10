@@ -538,3 +538,89 @@
         #bottom-buttons button#closeOrderSummary:hover {
             background-color: #5a6268; /* Darker grey on hover */
         }
+
+        /* Container for the icons */
+        .icon-container {
+            display: flex;                  /* Arrange icons in a row */
+            justify-content: center; /* Space the icons out evenly */
+            align-items: center;            /* Center the icons vertically */
+            position: fixed;                /* Position the container relative to the viewport */
+            bottom: 26px;                   /* Distance from the bottom of the viewport */
+            left: 20px;                     /* Distance from the left of the viewport */
+            right: 20px;                    /* Distance from the right of the viewport */
+            gap: 20px;                      /* Space between icons */
+            background-color: rgba(90, 215, 98, 0); /* Transparent background */
+            z-index: 1000;                  /* Ensure the container is above other content */
+        }
+
+        /* Individual button styling */
+        .icon-container button {
+            background-color: #5ad762;
+            width: 50px;
+            color: #ffffff;              /* White icon color */
+            border: none;                /* Remove border */
+            border-radius: 10px;         /* Round buttons */
+            cursor: pointer;             /* Pointer cursor on hover */
+            font-size: 20px;             /* Icon size */
+            transition: background-color 0.3s ease; /* Smooth background color change on hover */
+            padding: 0;
+        }
+
+        .menu-icon-container {
+            display: flex;                    /* Use flexbox for alignment */
+            position: fixed;                  /* Fixed positioning to stay in place */
+            bottom: 16px;                     /* Distance from the bottom of the viewport */
+            left: 25px;                       /* Distance from the left of the viewport */
+            background-color: var(--tg-theme-bg-color); /* Background color */
+            border-radius: 10px;              /* Rounded corners */
+            padding: 10px;                    /* Padding around the icon */
+            z-index: 1000;                    /* Ensure it is above other content */
+        }
+
+        .menu-icon-container button {
+            /*background-color: rgba(45, 24, 8, 0);   /* Background color for button */
+            background-color: #5ad762;   /* Background color for button */
+            color: #ffffff; /* Icon color */
+            width: 50px;
+            border: none;                     /* Remove button border */
+            font-size: 20px;                  /* Size of the icon */
+            cursor: pointer;                  /* Pointer cursor on hover */
+            transition: color 0.3s ease;      /* Smooth color change on hover */
+        }
+
+        /* Hover effect for the buttons */
+        .icon-container button:hover {
+            background-color: var(--tg-theme-bg-color);
+        }
+
+        /* Optional: Remove focus outline */
+        .icon-container button:focus {
+            outline: none;
+        }
+
+/* Slide icons to the center */
+.icon-container.slide-out {
+    justify-content: center;      /* Move icons to the center */
+    gap: 0px;                     /* Remove space between icons */
+    transition: all 0.5s ease;    /* Smooth transition for sliding */
+}
+
+/* Reduce button size as they slide */
+.icon-container.slide-out button {
+    transform: scale(0.5);        /* Shrink the icons */
+    transition: transform 0.5s ease; /* Smooth transition for shrinking */
+}
+
+.icon-container.move-to-bottom-left {
+    transform: translateX(80vw) translateY(0); /* Adjust X and Y values to move to bottom left */
+    gap: -20vw; /* Remove gap between icons if you want them to stack */
+    transition: transform 0.8s ease; /* Smooth transition for shrinking */
+}
+
+.icon-container.move-to-center {
+    transform: translateX(0) translateY(0); /* Adjust X and Y values to move to bottom left */
+    gap: -20vw; /* Remove gap between icons if you want them to stack */
+    transition: transform 0.8s ease; /* Smooth transition for shrinking */
+}
+
+
