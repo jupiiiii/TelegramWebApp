@@ -68,8 +68,11 @@
 
         /* Main content styling */
         #main {
+            position: absolute; /* Enables free positioning with top, left, etc. */
+            top: 70%; /* Adjust Y-axis position */
+            left: 40%; /* Adjust X-axis position */
             text-align: center;
-            color: white;
+            color: var(--tg-theme-text-color);
             z-index: 3;              /* Ensure it's above other content */
             padding: 20px;           /* Optional padding for some space around the content */
         }
@@ -104,12 +107,12 @@
             transition: all 500ms ease;
             /*color: var(--tg-theme-button-color);*/
             color: #ffffff;
-            background: #ec1977;
+            background: #ed7318;
             /*background: var(--tg-theme-button-text-color);*/
         }
 
         button:hover {
-            background: #b60554;
+            background: #b65105;
             /*background: var(--tg-theme-secondary-bg-color);*/
         }
         #form {
@@ -238,9 +241,8 @@
             font-weight: 300;
             cursor: pointer;
             transition: all 500ms ease;
-            /*color: var(--tg-theme-button-color);*/
-            color: #ffffff;
-            background: #ec1977;
+            color: var(--tg-theme-button-color);
+            background: #ed7318;
             /*background: var(--tg-theme-button-text-color);*/
         }
 
@@ -260,7 +262,7 @@
         }
 
         .quantity-button.plus {
-            background-color: #ec1977; /* Green color for plus button */
+            background-color: #ed7318; /* Green color for plus button */
             height: 25px;
             width: 35px;
             font-size: 13px;
@@ -270,7 +272,7 @@
         }
 
         #add:hover {
-            background: #b60956;
+            background: #c15605;
             /*background: var(--tg-theme-secondary-bg-color);*/
         }
 
@@ -279,14 +281,14 @@
         }
 
         .item-button.plus {
-            background-color: #ec1977; /* Green color for plus button */
+            background-color: #ed7318; /* Green color for plus button */
         }
 
         .item-counter {
             position: absolute;
             top: 7px;
             right: 7px;
-            background-color: #ec1977;
+            background-color: #ed7318;
             color: white;
             padding: 5px;
             border-radius: 25%;
@@ -429,7 +431,7 @@
 
         .order-summary-total-price {
             font-size: 1.2em;
-            color: #ec1977;
+            color: #ed7318;
             font-weight: bold;
         }
 
@@ -450,7 +452,7 @@
         }
 
         .order-summary-quantity {
-            color: #ec1977;
+            color: #ed7318;
             font-weight: bold;
         }
 
