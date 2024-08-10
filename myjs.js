@@ -1,6 +1,9 @@
 let tg = window.Telegram.WebApp;
 let shop_now = document.getElementById('shop_now');
-let order = document.getElementById('order');
+const menuIcon = document.getElementById('menu_icon');
+const iconsContainer = document.getElementById('icons');
+const menuContainer = document.getElementById('menu_icons');
+
 
 document.getElementById('main').style.display = 'block';
 document.getElementById('items-list').style.display = 'none';
@@ -10,7 +13,11 @@ shop_now.addEventListener('click', () => {
     document.getElementById('video-background').style.display = 'none';
     document.getElementById('main').style.display = 'none';
     document.getElementById('items-list').style.display = 'flex';
+    menuContainer.style.display = 'flex';
+    iconsContainer.style.display = 'flex';
+
 });
+let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
 
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -20,8 +27,13 @@ shop_now.addEventListener('click', () => {
             const modal = document.getElementById('imageModal');
             const modalImage = document.getElementById('modalImage');
             const closeModal = document.getElementById('closeModal');
-            const closesummary = document.getElementById('bottom-buttons')
+            const close_summary = document.getElementById('bottom-buttons');
+
+
+
             // const checkout = document.getElementById('checkout')
+            // Attach event listener to menu icon
+            menuContainer.addEventListener('click', toggleIconMovement);
 
             // Array to keep track of selected items
             const selectedItems = [];
@@ -47,10 +59,50 @@ shop_now.addEventListener('click', () => {
             function updatePlaceOrderButtonVisibility() {
                 const totalItems = Object.values(itemCounter).reduce((sum, count) => sum + count, 0);
                 placeOrderButton.style.display = totalItems > 0 ? 'block' : 'none';
+                //hideIconsTwo();
+
             }
+
+            // Function to toggle icon movement
+            function toggleIconMovement() {
+                if (isExpanded) {
+                    iconsContainer.classList.toggle('move-to-bottom-left');
+
+                } else {
+                    iconsContainer.classList.toggle('move-to-bottom-left');
+                }
+                isExpanded = !isExpanded;
+
+            }
+
+
+            // Function to hide icons with sliding effect
+            function hideIcons() {
+                // Add the slide-out class to start the animation
+                //iconsContainer.classList.add('slide-out');
+                iconsContainer.classList.add('move-to-bottom-left');
+
+                // Wait for the animation to complete before hiding the icons
+                setTimeout(() => {
+                    iconsContainer.style.display = 'none';
+                }, 500); // Match the timeout duration to the CSS transition duration (0.5s in this case)
+            }
+
+            function hideIconsTwo() {
+                // Add the slide-out class to start the animation
+                iconsContainer.classList.add('slide-out');
+                //iconsContainer.classList.add('move-to-bottom-left');
+
+                // Wait for the animation to complete before hiding the icons
+                setTimeout(() => {
+                    iconsContainer.style.display = 'none';
+                }, 500); // Match the timeout duration to the CSS transition duration (0.5s in this case)
+            }
+
 
             // Adding click event to the "ADD" button
             document.querySelectorAll('.item-button').forEach(button => {
+
                 button.addEventListener('click', function() {
                     const itemId = this.getAttribute('data-item-id');
                     const controls = this.nextElementSibling;
@@ -126,6 +178,7 @@ shop_now.addEventListener('click', () => {
                         const itemControls = this.parentElement;
                         itemControls.style.display = 'none';
                         itemControls.previousElementSibling.style.display = 'block';
+                        let isExpanded = false;  // Track the state of the icons (expanded or collapsed)
                         counter.textContent = 1; // Reset counter for next addition
                     }
 
@@ -195,14 +248,24 @@ shop_now.addEventListener('click', () => {
             document.getElementById('place-order-button').addEventListener('click', () => {
                 updateOrderSummary(); // Update and show the order summary modal
                 placeOrderButton.style.display = 'none'
-                closesummary.style.display = 'inline-block';
+                close_summary.style.display = 'inline-block';
+                //iconsContainer.style.display = 'none'
+                if (isExpanded) {
+                    toggleIconMovement();
+                }
+                menuContainer.style.display = 'none'
             });
 
             // Event listener for closing the order summary modal
             document.getElementById('closeOrderSummary').addEventListener('click', () => {
                 const modal = document.getElementById('orderSummaryModal');
                 modal.style.display = 'none'; // Hide the order summary modal
-                closesummary.style.display = 'none';
+                close_summary.style.display = 'none';
+                //iconsContainer.style.display = 'none'
+                //isExpanded = !isExpanded;
+
+
+                menuContainer.style.display = 'flex'
                 updatePlaceOrderButtonVisibility();
             });
 
