@@ -546,7 +546,7 @@
             align-items: center;            /* Center the icons vertically */
             position: fixed;                /* Position the container relative to the viewport */
             bottom: 26px;                   /* Distance from the bottom of the viewport */
-            left: 20px;                     /* Distance from the left of the viewport */
+            left: 40%;                     /* Distance from the left of the viewport */
             right: 20px;                    /* Distance from the right of the viewport */
             gap: 20px;                      /* Space between icons */
             background-color: rgba(90, 215, 98, 0); /* Transparent background */
@@ -570,8 +570,8 @@
             display: flex;                    /* Use flexbox for alignment */
             position: fixed;                  /* Fixed positioning to stay in place */
             bottom: 16px;                     /* Distance from the bottom of the viewport */
-            left: 25px;                       /* Distance from the left of the viewport */
-            background-color: var(--tg-theme-bg-color); /* Background color */
+            left: 10%;                       /* Distance from the left of the viewport */
+            /*background-color: var(--tg-theme-bg-color); /* Background color */
             border-radius: 10px;              /* Rounded corners */
             padding: 10px;                    /* Padding around the icon */
             z-index: 1000;                    /* Ensure it is above other content */
