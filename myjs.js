@@ -227,18 +227,24 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                 const src = image.getAttribute('src');
                 modalImage.setAttribute('src', src);
                 modal.style.display = 'flex';
-                placeOrderButton.style.display = 'none'
+                placeOrderButton.style.display = 'none';
+                menuContainer.style.display = 'none';
+                if (isExpanded) {
+                    toggleIconMovement();
+                }
                 });
             });
 
             closeModal.addEventListener('click', () => {
                 modal.style.display = 'none';
+                menuContainer.style.display = 'flex';
                 updatePlaceOrderButtonVisibility();
             });
 
             modal.addEventListener('click', (e) => {
                 if (e.target !== modalImage && e.target !== closeModal) {
                 modal.style.display = 'none';
+                menuContainer.style.display = 'flex';
                 updatePlaceOrderButtonVisibility();
                 }
             });
