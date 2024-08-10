@@ -33,8 +33,10 @@
             position: relative;
             width: 100%;
             height: 100vh; /* Full viewport height */
-            overflow: hidden;
+            /*overflow: hidden;*/
             animation: backgroundAnimation 1s infinite;
+            background-size: cover;
+            background-position: center;
         }
 
         /* The video itself */
@@ -45,6 +47,7 @@
             min-width: 100%;
             min-height: 100%;
             width: auto;
+            
             height: auto;
             z-index: -1;
             transform: translate(-50%, -50%);
@@ -260,7 +263,7 @@
             font-weight: 300;
             cursor: pointer;
             transition: all 500ms ease;
-            color: var(--tg-theme-button-color);
+            color: #fff; /*var(--tg-theme-button-color);*/
             background: #ed7318;
             /*background: var(--tg-theme-button-text-color);*/
         }
