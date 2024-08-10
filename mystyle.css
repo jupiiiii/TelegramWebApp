@@ -365,8 +365,8 @@
 
         #place-order-button {
             position: fixed;
-            bottom: 20px;
-            left: 50%;
+            bottom: 25px;
+            left: 68%;
             transform: translateX(-50%);
             background-color: #5ad762; /* or your preferred color */
             color: white;
@@ -378,7 +378,7 @@
             z-index: 1000; /* Ensure it appears above other elements */
             display: none;
             width: 200px;
-            height: 50px;
+            height: 40px;
             font-weight: 400;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
@@ -545,7 +545,7 @@
             justify-content: center; /* Space the icons out evenly */
             align-items: center;            /* Center the icons vertically */
             position: fixed;                /* Position the container relative to the viewport */
-            bottom: 26px;                   /* Distance from the bottom of the viewport */
+            bottom: 25px;                   /* Distance from the bottom of the viewport */
             left: 40%;                     /* Distance from the left of the viewport */
             right: 20px;                    /* Distance from the right of the viewport */
             gap: 20px;                      /* Space between icons */
@@ -570,7 +570,7 @@
             display: flex;                    /* Use flexbox for alignment */
             position: fixed;                  /* Fixed positioning to stay in place */
             bottom: 16px;                     /* Distance from the bottom of the viewport */
-            left: 10%;                       /* Distance from the left of the viewport */
+            left: 7%;                       /* Distance from the left of the viewport */
             /*background-color: var(--tg-theme-bg-color); /* Background color */
             border-radius: 10px;              /* Rounded corners */
             padding: 10px;                    /* Padding around the icon */
@@ -590,12 +590,16 @@
 
         /* Hover effect for the buttons */
         .icon-container button:hover {
-            background-color: var(--tg-theme-bg-color);
+            background-color: #309a37;
         }
 
-        /* Optional: Remove focus outline */
-        .icon-container button:focus {
-            outline: none;
+        /*!* Optional: Remove focus outline *!*/
+        /*.icon-container button:focus {*/
+        /*    outline: none;*/
+        /*}*/
+
+        .menu-icon-container button:hover {
+            background-color: #309a37;
         }
 
 /* Slide icons to the center */
