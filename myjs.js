@@ -28,6 +28,9 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             const modalImage = document.getElementById('modalImage');
             const closeModal = document.getElementById('closeModal');
             const close_summary = document.getElementById('bottom-buttons');
+            const cart = document.getElementById('cart_icon');
+            const about = document.getElementById('about_icon');
+            const contact = document.getElementById('contact_icon');
 
 
 
@@ -58,8 +61,12 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             // Function to update the "Place Order" button visibility
             function updatePlaceOrderButtonVisibility() {
                 const totalItems = Object.values(itemCounter).reduce((sum, count) => sum + count, 0);
-                placeOrderButton.style.display = totalItems > 0 ? 'block' : 'none';
+                // placeOrderButton.style.display = totalItems > 0 ? 'block' : 'none';
                 //hideIconsTwo();
+                // iconsContainer.style.display = 'flex'
+                if (!isExpanded) {
+                    toggleIconMovement();
+                }
 
             }
 
@@ -124,6 +131,8 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                     if (!itemCounter[itemId]) itemCounter[itemId] = 0;
                     itemCounter[itemId]++;
                     updatePlaceOrderButtonVisibility();
+
+
                 });
             });
 
@@ -180,9 +189,10 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                         itemControls.previousElementSibling.style.display = 'block';
                         let isExpanded = false;  // Track the state of the icons (expanded or collapsed)
                         counter.textContent = 1; // Reset counter for next addition
-                    }
 
+                    }
                     updatePlaceOrderButtonVisibility();
+
                 });
             });
 
@@ -251,16 +261,17 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
 
 
             // Event listener for the "Place Order" button to show the order summary modal
-            document.getElementById('place-order-button').addEventListener('click', () => {
+            document.getElementById('cart_icon').addEventListener('click', () => {
                 // Disable body scroll
                 document.body.style.overflow = 'hidden';
                 updateOrderSummary(); // Update and show the order summary modal
-                placeOrderButton.style.display = 'none'
+                // placeOrderButton.style.display = 'none'
                 close_summary.style.display = 'inline-block';
                 //iconsContainer.style.display = 'none'
-                if (isExpanded) {
-                    toggleIconMovement();
-                }
+                // if (isExpanded) {
+                //     toggleIconMovement();
+                // }
+                iconsContainer.style.display = 'none'
                 menuContainer.style.display = 'none'
             });
 
@@ -273,10 +284,11 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                 close_summary.style.display = 'none';
                 //iconsContainer.style.display = 'none'
                 //isExpanded = !isExpanded;
-
-
+                // if (isExpanded) {
+                //     toggleIconMovement();
+                // }
                 menuContainer.style.display = 'flex'
-                updatePlaceOrderButtonVisibility();
+                iconsContainer.style.display = 'flex'
             });
 
             // Event listener for checking out the order summary modal
