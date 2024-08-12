@@ -252,6 +252,8 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
 
             // Event listener for the "Place Order" button to show the order summary modal
             document.getElementById('place-order-button').addEventListener('click', () => {
+                // Disable body scroll
+                document.body.style.overflow = 'hidden';
                 updateOrderSummary(); // Update and show the order summary modal
                 placeOrderButton.style.display = 'none'
                 close_summary.style.display = 'inline-block';
@@ -265,6 +267,8 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             // Event listener for closing the order summary modal
             document.getElementById('closeOrderSummary').addEventListener('click', () => {
                 const modal = document.getElementById('orderSummaryModal');
+                // Re-enable body scroll
+                document.body.style.overflow = 'auto';
                 modal.style.display = 'none'; // Hide the order summary modal
                 close_summary.style.display = 'none';
                 //iconsContainer.style.display = 'none'
