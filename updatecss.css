@@ -58,26 +58,22 @@
 
         /* Container for the video and content */
         #video-background {
-            width: 100%;
-            padding-bottom: 30px;
+            position: static;
+            width: 100vw;
             height: 100vh; /* Full viewport height */
-            margin-top: 40px;
-            top: 0;
-            left: 0;
             animation: slideBackground 40s infinite;
-            background-size: contain;
+            background-size: cover;
             background-repeat: no-repeat;
             transition: opacity 0.1s;
         }
 
         #background-image {
             position: fixed;
-            top: 0;
-            left: 0;
+            bottom: 30px;
             width: 100vw;
             height: 100vh;
             object-fit: scale-down;
-            z-index: -1; /* Place image behind other content */
+            z-index: -5; /* Place image behind other content */
         }
 
         * {
