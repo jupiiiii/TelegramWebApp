@@ -130,23 +130,24 @@
 
         #tag {
             position: fixed;
-            top: 50%; /* Adjust Y-axis position */
-            left: 30%; /* Adjust X-axis position */
+            top: 80%; /* Adjust Y-axis position */
+            left: 50%; /* Adjust X-axis position */
             text-align: center;
             color: var(--tg-theme-text-color);
+            z-index: 3;              /* Ensure it's above other content */
             /*padding: 20px;           !* Optional padding for some space around the content *!*/
-            padding-bottom: 20px;
-
+            background-position: center;
+            object-fit: scale-down;
         }
 
         p {
             display: flex;
             font-family: 'Malayalam MN', cursive;
-            margin-bottom: 50px;
+            /*margin: 5px auto;*/
             font-size: 10px;
             font-weight: 250;
             text-align: center;
-            /*max-width: fit-content;*/
+            max-width: fit-content;
             color: var(--tg-theme-text-color);
         }
 
