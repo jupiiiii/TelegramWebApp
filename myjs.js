@@ -34,7 +34,6 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             const cart = document.getElementById('cart_icon');
             const about = document.getElementById('about_icon');
             const contact = document.getElementById('contact_icon');
-            const contact_buttons = document.getElementById('submit-buttons');
 
 
 
@@ -337,11 +336,24 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             document.getElementById('contact_icon').addEventListener('click', () => {
 
                 document.getElementById('items-list').style.display = 'none';
+                // document.body.style.overflow = 'hidden';
                 iconsContainer.style.display = 'none'
                 menuContainer.style.display = 'none'
                 const form = document.getElementById('form')
-                contact_buttons.style.display = 'flex'
+                const submit_butts = document.getElementById('submit-buttons')
                 form.style.display = 'flex'
+                submit_butts.style.display = 'inline-block'
+            });
+
+            document.getElementById('back').addEventListener('click', () =>{
+                // document.body.style.overflow = 'auto';
+                document.getElementById('items-list').style.display = 'flex';
+                iconsContainer.style.display = 'flex'
+                menuContainer.style.display = 'flex'
+                const form = document.getElementById('form')
+                const submit_butts = document.getElementById('submit-buttons')
+                form.style.display = 'none'
+                submit_butts.style.display = 'none'
             });
 
             document.getElementById('submit').addEventListener('click', () => {
@@ -372,26 +384,16 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                     return;
                 }
 
-                let data = {
+                let complaint = {
                     name: name,
                     email: email,
                     phone: phone,
                     message: message
                 }
-                tg.sendData(JSON.stringify(data));
+                tg.sendData(JSON.stringify(complaint));
                 tg.close();
             });
 
-
-
-            document.getElementById('back').addEventListener('click', () => {
-                document.getElementById('items-list').style.display = 'flex';
-                iconsContainer.style.display = 'flex'
-                menuContainer.style.display = 'flex'
-                const form = document.getElementById('form')
-                contact_buttons.style.display = 'none'
-                form.style.display = 'none'
-            });
 
 
 
