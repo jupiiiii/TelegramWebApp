@@ -780,7 +780,7 @@ display: none;
 /* General styles for the about section */
 #about {
 padding: 50px 20px;
-background-color: #f4f4f4;
+background-color: var(--tg-theme-bg-color);
 color: #333;
 }
 
@@ -805,11 +805,13 @@ margin-right: 20px;
 
 .about-container h2 {
 font-size: 2.5em;
-margin-bottom: 20px;
+margin-bottom: 5px;
 }
 
+
 .about-text p {
-font-size: 1.2em;
+font-size: 16px;
+font-family: 'Marion', sans-serif;
 line-height: 1.6;
 margin-bottom: 20px;
 margin: 0 0 20px 0;
