@@ -296,9 +296,18 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
 
             // Event listener for checking out the order summary modal
             document.getElementById('checkout').addEventListener('click', () => {
-                sendOrderToTelegram();
+                if (selectedItems.length === 0) {
+                    showError("No items selected. Please add items to your order before checking out.");
+                } else {
+                    sendOrderToTelegram();
+                }
 
             });
+
+            // Function to show an error message
+            function showError(message) {
+                alert(message);
+            }
 
             function sendOrderToTelegram() {
                 const orderData = selectedItems.map(item => {
