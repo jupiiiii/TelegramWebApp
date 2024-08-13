@@ -8,6 +8,7 @@ const tag = document.getElementById('tag');
 
 document.getElementById('main').style.display = 'block';
 document.getElementById('items-list').style.display = 'none';
+tag.style.display = 'flex'
 
 shop_now.addEventListener('click', () => {
     tg.expand();
@@ -16,7 +17,7 @@ shop_now.addEventListener('click', () => {
     document.getElementById('items-list').style.display = 'flex';
     menuContainer.style.display = 'flex';
     iconsContainer.style.display = 'flex';
-    tag.style.display = 'flex'
+    tag.style.display = 'none'
 
 });
 let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
