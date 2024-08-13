@@ -35,6 +35,8 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             const about = document.getElementById('about_icon');
             const contact = document.getElementById('contact_icon');
             const form_container = document.getElementById('form')
+            const about_section = document.getElementById('about')
+            const about_back = document.getElementById('about_back')
 
 
 
@@ -356,6 +358,26 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                 const submit_butts = document.getElementById('submit-buttons')
                 form.style.display = 'none'
                 submit_butts.style.display = 'none'
+            });
+
+            // Event listener for the "About" button to show the order summary modal
+            document.getElementById('about_icon').addEventListener('click', () => {
+
+                document.getElementById('items-list').style.display = 'none';
+                // document.body.style.overflow = 'hidden';
+                iconsContainer.style.display = 'none'
+                menuContainer.style.display = 'none'
+                about_section.style.display = 'flex'
+            });
+
+            // Event listener for the "About back" button to show the order summary modal
+            document.getElementById('about_back').addEventListener('click', () => {
+
+                document.getElementById('items-list').style.display = 'flex';
+                // document.body.style.overflow = 'hidden';
+                iconsContainer.style.display = 'flex'
+                menuContainer.style.display = 'flex'
+                about_section.style.display = 'none'
             });
 
             document.getElementById('submit').addEventListener('click', () => {

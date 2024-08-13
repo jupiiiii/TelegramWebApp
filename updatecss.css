@@ -647,7 +647,6 @@ margin: 100px auto;
 padding: 20px;
 background-color: var(--tg-theme-bg-color);
 border-radius: 10px;
-border-color: #f7f7f7f7;
 box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
 font-family: 'Arial', sans-serif;
 flex-direction: column;
@@ -723,6 +722,22 @@ margin-bottom: 10px;
 display: none;
 }
 
+/* Submit Button */
+/*#submit {*/
+/*    width: 100%;*/
+/*    padding: 10px;*/
+/*    background-color: #5ad762;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    font-size: 18px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*#submit:hover {*/
+/*    background-color: #45c54a;*/
+/*}*/
 
 #submit-buttons {
     position: fixed;
@@ -760,6 +775,74 @@ display: none;
 
 #submit-buttons button#back:hover {
     background-color: #5a6268; /* Darker grey on hover */
+}
+
+/* General styles for the about section */
+#about {
+padding: 50px 20px;
+background-color: #f4f4f4;
+color: #333;
+}
+
+/* Container that holds the text and image */
+.about-container {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+max-width: 1200px;
+margin: 0 auto;
+flex-wrap: wrap; /* Allows content to wrap on smaller screens */
+flex-direction: column;
+text-align: center;
+}
+
+/* Text section styles */
+.about-text {
+flex: 1;
+margin-right: 20px;
+}
+
+.about-container h2 {
+font-size: 2.5em;
+margin-bottom: 20px;
+}
+
+.about-text p {
+font-size: 1.2em;
+line-height: 1.6;
+margin-bottom: 20px;
+margin: 0 0 20px 0;
+}
+
+/* Button styles */
+#about_back {
+padding: 10px 20px;
+font-size: 1em;
+background-color: #6c757d;
+color: #fff;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+#about_back:hover {
+background-color: #5a6268;
+}
+
+/* Image section styles */
+.about-image {
+flex: 1;
+text-align: center;
+margin-top: 20px;
+}
+
+.about-image img {
+width: 300px;
+height: 400px;
+height: auto;
+border-radius: 10px;
 }
 
 
