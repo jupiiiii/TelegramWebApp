@@ -231,7 +231,7 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                 orderSummary.appendChild(totalElement);
 
                 const modal = document.getElementById('orderSummaryModal');
-                modal.style.display = selectedItems.length > 0 ? 'flex' : 'none'; // Show or hide the modal based on the selection
+                modal.style.display = selectedItems.length >= 0 ? 'flex' : 'none'; // Show or hide the modal based on the selection
             }
 
             // Script for handling the modal for image enlargement
