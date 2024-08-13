@@ -131,7 +131,7 @@
         #tag {
             position: absolute;
             top: 96%; /* Adjust Y-axis position */
-            left: 27%; /* Adjust X-axis position */
+            left: 25%; /* Adjust X-axis position */
             text-align: center;
             color: var(--tg-theme-text-color);
             z-index: 3;              /* Ensure it's above other content */
