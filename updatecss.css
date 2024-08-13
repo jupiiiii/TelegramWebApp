@@ -641,7 +641,7 @@ transition: transform 0.8s ease; /* Smooth transition for shrinking */
 /* Form Container */
 #form {
 width: 100%;
-/*height: 60%;*/
+height: 70vh;
 max-width: 350px;
 margin: 100px auto;
 padding: 20px;
@@ -723,22 +723,6 @@ margin-bottom: 10px;
 display: none;
 }
 
-/* Submit Button */
-/*#submit {*/
-/*    width: 100%;*/
-/*    padding: 10px;*/
-/*    background-color: #5ad762;*/
-/*    color: white;*/
-/*    border: none;*/
-/*    border-radius: 5px;*/
-/*    font-size: 18px;*/
-/*    cursor: pointer;*/
-/*    transition: background-color 0.3s ease;*/
-/*}*/
-
-/*#submit:hover {*/
-/*    background-color: #45c54a;*/
-/*}*/
 
 #submit-buttons {
     position: fixed;
