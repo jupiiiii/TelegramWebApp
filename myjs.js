@@ -346,6 +346,7 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             });
 
             document.getElementById('back').addEventListener('click', () =>{
+                event.preventDefault();
                 // document.body.style.overflow = 'auto';
                 document.getElementById('items-list').style.display = 'flex';
                 iconsContainer.style.display = 'flex'
