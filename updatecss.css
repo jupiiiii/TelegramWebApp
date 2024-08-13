@@ -130,7 +130,7 @@
 
         #tag {
             position: absolute;
-            top: 90%; /* Adjust Y-axis position */
+            top: 98%; /* Adjust Y-axis position */
             left: 20%; /* Adjust X-axis position */
             text-align: center;
             color: var(--tg-theme-text-color);
