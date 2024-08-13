@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Web App Test</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap">
-    <link rel="stylesheet" href="updatecss.css">
+    <link rel="stylesheet" href="mystyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -27,12 +27,36 @@
         <p>©2024 abyssinia co. t.me/AbyssiniaCo</p>
     </div>
     <form id="form">
-        <label for='user_name'></label><input type='text' placeholder='First Name' id='user_name' >
-        <label for='user_email'></label><input type='text' placeholder='Email' id='user_email' >
-        <label for='user_phone'></label><input type='text' placeholder='Phone' id='user_phone' >
+        <div class="form-row" id="name_email">
+            <div class="form-group" id="first_name">
+                <label for='user_name'></label>
+                <input type='text' placeholder='First Name' id='user_name'>
+            </div>
+            <div class="form-group">
+                <label for='user_email'></label>
+                <input type='text' placeholder='Email' id='user_email'>
+            </div>
+        </div>
+        <div class="form-row" id="phone_box">
+            <div class="form-group">
+                <label for='user_phone'></label>
+                <input type='text' placeholder='Phone' id='user_phone'>
+            </div>
+        </div>
+        <div class="form-row" id="message_box">
+            <div class="form-group">
+                <label for='message'></label>
+                <textarea placeholder="Message" id="message"></textarea>
+            </div>
+        </div>
         <div id="error"></div>
-        <button id="order">Order</button>
+        <div id="submit-buttons" style="display: none">
+            <button id="back">&larr; Back</button>
+            <button id="submit">Submit</button>
+        </div>
     </form>
+
+
     <div id="items-list" style="display: none">
         <div class="item" data-image-src="coke_burgur">
             <img src="coke_burgur.png" alt="coke and burger">

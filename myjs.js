@@ -34,6 +34,8 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
             const cart = document.getElementById('cart_icon');
             const about = document.getElementById('about_icon');
             const contact = document.getElementById('contact_icon');
+            const contact_buttons = document.getElementById('submit-buttons');
+
 
 
 
@@ -331,39 +333,68 @@ let isExpanded = true;  // Track the state of the icons (expanded or collapsed)
                 tg.close();
             }
 
+            // Event listener for the "Contact" button to show the order summary modal
+            document.getElementById('contact_icon').addEventListener('click', () => {
+
+                document.getElementById('items-list').style.display = 'none';
+                iconsContainer.style.display = 'none'
+                menuContainer.style.display = 'none'
+                const form = document.getElementById('form')
+                contact_buttons.style.display = 'flex'
+                form.style.display = 'flex'
+            });
+
+            document.getElementById('submit').addEventListener('click', () => {
+                event.preventDefault();
+                document.getElementById('error').innerText = ' ';
+                let name = document.getElementById('user_name').value;
+                let email = document.getElementById('user_email').value;
+                let phone = document.getElementById('user_phone').value;
+                let message = document.getElementById('message').value;
+
+                if (name.length < 3) {
+                    document.getElementById('error').innerText = 'Please enter your name';
+                    return;
+                }
+
+                if (email.length < 5) {
+                    document.getElementById('error').innerText = 'Please enter your correct email';
+                    return;
+                }
+
+                if (phone.length < 5) {
+                    document.getElementById('error').innerText = 'Please enter your phone number';
+                    return;
+                }
+
+                if (message.length < 5) {
+                    document.getElementById('error').innerText = 'Message cannot be empty!';
+                    return;
+                }
+
+                let data = {
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message
+                }
+                tg.sendData(JSON.stringify(data));
+                tg.close();
+            });
+
+
+
+            document.getElementById('back').addEventListener('click', () => {
+                document.getElementById('items-list').style.display = 'flex';
+                iconsContainer.style.display = 'flex'
+                menuContainer.style.display = 'flex'
+                const form = document.getElementById('form')
+                contact_buttons.style.display = 'none'
+                form.style.display = 'none'
+            });
+
 
 
 
         });
 
-
-        /*order.addEventListener('click', (event) => {
-            event.preventDefault();
-            document.getElementById('error').innerText = ' ';
-            let name = document.getElementById('user_name').value;
-            let email = document.getElementById('user_email').value;
-            let phone = document.getElementById('user_phone').value;
-
-            if (name.length < 5) {
-                document.getElementById('error').innerText = 'Please enter your name';
-                return;
-            }
-
-            if (email.length < 5) {
-                document.getElementById('error').innerText = 'Please enter your correct email';
-                return;
-            }
-
-            if (phone.length < 5) {
-                document.getElementById('error').innerText = 'Please enter your phone number';
-                return;
-            }
-
-            let data = {
-                name: name,
-                email: email,
-                phone: phone
-            }
-            tg.sendData(JSON.stringify(data));
-            tg.close();
-        });*/
